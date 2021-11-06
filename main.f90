@@ -27,7 +27,7 @@ program main
     real(real32),parameter :: to_second = 1e-3
 
     integer(c_long_long) :: time_begin_qhc, time_end_qhc, freq
-    logical(c_bool) :: is_supproted, is_succeeded
+    logical(c_bool) :: is_supported, is_succeeded
 
     allocate(a(N,N))
     allocate(b(N,N))
@@ -115,8 +115,8 @@ program main
 
 #ifdef _WIN32 || _WIN64
     ! query performance counter
-    is_supproted = QueryPerformanceFrequency(freq)
-    if(is_supproted)then
+    is_supported = QueryPerformanceFrequency(freq)
+    if(is_supported)then
         !$omp master
         is_succeeded = QueryPerformanceCounter(time_begin_qhc)
         !$omp end master
